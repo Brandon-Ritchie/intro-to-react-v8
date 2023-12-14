@@ -1,6 +1,10 @@
-import { Component } from "react";
+import { Component, MouseEvent } from "react";
 
-class Carousel extends Component {
+interface Props {
+  images: string[];
+}
+
+class Carousel extends Component<Props> {
   state = {
     active: 0,
   };
@@ -10,7 +14,11 @@ class Carousel extends Component {
   };
 
   // arrow functions don't create new scope
-  handleIndexClick = (e) => {
+  handleIndexClick = (e: MouseEvent<HTMLElement>) => {
+    if (!(e.target instanceof HTMLElement) || !e.target.dataset.index) {
+      return;
+    }
+
     // `this` is now the Carousel component, which is different than Angular
     this.setState({
       active: +e.target.dataset.index,
