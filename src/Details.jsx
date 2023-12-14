@@ -1,11 +1,12 @@
-import { useState, useContext } from "react";
+import { useState, useContext, lazy } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import AdoptedPetContext from "./AdoptedPetContext";
 import ErrorBoundary from "./ErrorBoundary";
 import fetchPet from "./fetchPet";
 import Carousel from "./Carousel";
-import Modal from "./Modal";
+
+const Modal = lazy(() => import("./Modal")); // This is a bad idea, but it's just for demonstration purposes, because the Modal component is very small.
 
 const Details = () => {
   const [showModal, setShowModal] = useState(false);
