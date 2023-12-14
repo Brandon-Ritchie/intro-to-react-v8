@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { Pet } from "./APIResponsesTypes";
 
 const AdoptedPetContext = createContext<
-  [Pet, (adoptedPet: Pet) => void] | null
->(null);
+  [Pet | null, (adoptedPet: Pet) => void]
+>([null, () => ({})]);
 
 export default AdoptedPetContext;
