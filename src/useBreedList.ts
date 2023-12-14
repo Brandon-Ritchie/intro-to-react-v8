@@ -5,5 +5,5 @@ import { Animal } from "./APIResponsesTypes";
 export default function useBreedList(animal: Animal): [string[], QueryStatus] {
   const results = useQuery(["breeds", animal], fetchBreedList);
 
-  return [results?.data?.breeds ?? [], results.status];
+  return [results?.data?.breeds ?? ([] as string[]), results.status];
 }

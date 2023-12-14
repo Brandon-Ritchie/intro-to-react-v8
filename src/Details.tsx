@@ -2,11 +2,10 @@ import { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import ErrorBoundary from "./ErrorBoundary";
-import fetchPet from "./fetchPet";
 import Carousel from "./Carousel";
 import Modal from "./Modal";
-import { PetAPIResponse } from "./APIResponsesTypes";
 import AdoptedPetContext from "./AdoptedPetContext";
+import fetchPet from "./fetchPet";
 
 const Details = () => {
   const { id } = useParams();
@@ -18,7 +17,7 @@ const Details = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [, setAdoptedPet] = useContext(AdoptedPetContext);
-  const results = useQuery<PetAPIResponse>(["details", id], fetchPet);
+  const results = useQuery(["details", id], fetchPet);
 
   if (results.isLoading) {
     return (
